@@ -1,4 +1,6 @@
 .env
 *__pycache__
 .vscode
-
+sdist
+dist
+sqlalchemy_query_helper.egg-info
