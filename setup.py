@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="sqlalchemy_query_helper",
+    name="sqlalchemy_command_helper",
     version="0.0.1",
     packages=find_packages(),
     install_requires=['SQLAlchemy>=1.2.12', 'python-dateutil>=2.7.3'],
