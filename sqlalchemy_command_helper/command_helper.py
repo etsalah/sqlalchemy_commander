@@ -42,7 +42,7 @@ def save(
     return obj
 
 
-def _update_by_id(
+def update_by_id(
         session_obj, model_cls, find_func, fields: Iterable[str], _id: Any,
         data: Dict):
 
@@ -65,12 +65,12 @@ def _update_by_id(
     ---------
     returns a raw instance of the model or a dictionary representing the model
     """
-    return _update_by_params(
+    return update_by_params(
         session_obj, model_cls, find_func, fields, [{"id": {"$eq": _id}}], data
     )
 
 
-def _update_by_params(
+def update_by_params(
         session_obj: SessionType, model_cls, find_func, fields: Iterable[str],
         params: List[Dict], data):
     """This function is updates the instance of the model represented by the
@@ -107,7 +107,7 @@ def _update_by_params(
     return found_obj
 
 
-def _delete_by_id(
+def delete_by_id(
         session_obj: SessionType, model_cls, find_func, fields: Iterable[str],
         _id, data: Dict = None):
     """This function is used to update an instance of the class indicated by
@@ -129,12 +129,12 @@ def _delete_by_id(
     returns raw instance or dictionary representing the raw instance based on
     json_result's value
     """
-    return _delete_by_params(
+    return delete_by_params(
         session_obj, model_cls, find_func, fields, [{"id": {"$eq": _id}}], data
     )
 
 
-def _delete_by_params(
+def delete_by_params(
         session_obj: SessionType, model_cls, find_func, fields: Iterable[str],
         params: List[Dict], data: Dict = None):
     """This function is used to update an instance of the class indicated by
@@ -162,5 +162,5 @@ def _delete_by_params(
     else:
         data.update({"removed": True, "removed_at": datetime.utcnow()})
 
-    return _update_by_params(
+    return update_by_params(
         session_obj, model_cls, find_func, fields, params, data)
